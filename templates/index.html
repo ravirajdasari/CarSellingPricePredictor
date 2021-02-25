@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Car SellingPrice Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background-image: url('https://wallpapercave.com/wp/wp2693677.jpg') ; background-repeat: no-repeat;background-size: 100% 100%;">
+ <div class="login">
+	<h1 style="font-size:20px">Car SellingPrice Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+		<input type="text" name="KM driven" placeholder="KM driven" required="required" />
+    	<input type="text" name="mileage" placeholder="Mileage in kmpl" required="required" />
+        <input type="text" name="engine" placeholder="Engine in CC" required="required" />
+		<input type="text" name="Max Power" placeholder="Max Power in bhp" required="required" />
+		<input type="text" name="Seats" placeholder="Number of seats" required="required" />
+		<input type="text" name="Age" placeholder="Age in years" required="required" />
+		<label for="Fuel_type" style="font-size:15px ; position:absolute; left:10px; font-weight: bold;">Fuel Type:</label>
+		<select  name="Fuel_type">	
+			<option value="cng">CNG</option>
+			<option value="diesel">Diesel</option>
+			<option value="lpg">LPG</option>
+			<option value="petrol">Petrol</option>		
+		</select>
+		</br>
+		<label for="Seller_type" style="font-size:15px ; position:absolute; left:10px; font-weight: bold;">Seller Type:</label>
+		<select  name="Seller Type">
+			<option value="dealer">Dealer</option>
+			<option value="individual">Individual</option>
+			<option value="trustmark dealer">Trustmark Dealer</option>
+		</select>
+		</br>
+		<label for="Transmission" style="font-size:15px ; position:absolute; left:10px; font-weight: bold;">Transmission:</label>
+		<select  name="Transmission">
+			<option value="automatic">Automatic</option>
+			<option value="manual">Manual</option>
+		</select>
+		</br>
+		<label for="Owner" style="font-size:15px ; position:absolute; left:10px; font-weight: bold;">Owner:</label>
+		<select  name="Owner">		
+			<option value="first">First</option>
+			<option value="second">Second</option>
+			<option value="third">Third</option>
+			<option value="fourth and above">Fourth and Above</option>
+			<option value="test drive car">Test Drive Car</option>
+		</select>
+		</br>
+		</br>
+		
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict SellingPrice</button>
+    </form>
+
+   <br>
+   <br>
+   <div style="color:#FFFFFF; font-size:20px; font-weight: bold;">{{ prediction_text }}</div>
+
+ </div>
+
+
+</body>
+</html>
